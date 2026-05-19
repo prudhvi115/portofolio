@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .glassmorphism {
+    @apply bg-cyber-bg-sec bg-opacity-40 backdrop-blur-md border border-white border-opacity-10 shadow-lg;
+  }
+  
+  .neon-text-cyan {
+    text-shadow: 0 0 5px #00f5ff, 0 0 10px #00f5ff, 0 0 20px #00f5ff;
+  }
+  
+  .neon-text-pink {
+    text-shadow: 0 0 5px #ec4899, 0 0 10px #ec4899, 0 0 20px #ec4899;
+  }
+  
+  .neon-box-cyan {
+    box-shadow: 0 0 10px #00f5ff, 0 0 20px #00f5ff, inset 0 0 10px #00f5ff;
+  }
+
+  .neon-box-purple {
+    box-shadow: 0 0 10px #8b5cf6, 0 0 20px #8b5cf6, inset 0 0 10px #8b5cf6;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #050816;
+  color: #ffffff;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050816;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8b5cf6;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00f5ff;
+}
+
+/* Cyberpunk Grid Background */
+.cyber-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 245, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 245, 255, 0.05) 1px, transparent 1px);
+}
