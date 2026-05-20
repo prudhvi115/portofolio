@@ -5,22 +5,31 @@ import { Github, Linkedin, Mail, Code } from 'lucide-react';
 
 const HeroSection = () => {
   const text1 = "Hi, I'm Pogaku Prudhvi";
-  const text2 = "Full Stack Developer & Data Analyst";
+  const text2 = "Full Stack Developer and Data Analyst";
   const [displayText1, setDisplayText1] = useState('');
   const [displayText2, setDisplayText2] = useState('');
 
   useEffect(() => {
+    let isMounted = true;
     let i = 0;
     let j = 0;
-    const type1 = setInterval(() => {
+    let type1;
+    let type2;
+
+    setDisplayText1('');
+    setDisplayText2('');
+
+    type1 = setInterval(() => {
+      if (!isMounted) return;
       if (i < text1.length) {
-        setDisplayText1((prev) => prev + text1.charAt(i));
+        setDisplayText1(text1.slice(0, i + 1));
         i++;
       } else {
         clearInterval(type1);
-        const type2 = setInterval(() => {
+        type2 = setInterval(() => {
+          if (!isMounted) return;
           if (j < text2.length) {
-            setDisplayText2((prev) => prev + text2.charAt(j));
+            setDisplayText2(text2.slice(0, j + 1));
             j++;
           } else {
             clearInterval(type2);
@@ -28,10 +37,13 @@ const HeroSection = () => {
         }, 50);
       }
     }, 100);
+
     return () => {
+      isMounted = false;
       clearInterval(type1);
+      clearInterval(type2);
     };
-  }, []);
+  }, [text1, text2]);
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
